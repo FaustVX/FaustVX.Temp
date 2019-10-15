@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <!--<AllowUnsafeBlocks>true</AllowUnsafeBlocks>-->
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <WarningsAsErrors>NU1605;CS8600;CS8601;CS8602;CS8603;CS8618;CS8625;CS8653</WarningsAsErrors>
+    <Authors>FaustVX</Authors>
+    <PackageId>FaustVX.Temp</PackageId>
+    <Product>FaustVX.Temp</Product>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+</Project>
