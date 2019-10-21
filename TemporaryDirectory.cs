@@ -29,6 +29,9 @@ namespace FaustVX.Temp
             return new TemporaryDirectory(tempDirectoryFullPath);
         }
 
+        public static TemporaryDirectory CreateLocalTemporaryDirectory()
+            => new TemporaryDirectory(IO.Path.GetRandomFileName());
+
         /// <summary>
         /// Implicit conversion to <see cref="IO.DirectoryInfo"/> for easy use as method parameter, etc.
         /// <remarks>Remember to keep a reference to the <see cref="TemporaryDirectory"/>, otherwise it might get finalized and disposed before you planned to :)</remarks>
