@@ -9,28 +9,31 @@ namespace FaustVX.Temp
         /// </summary>
         public IO.DirectoryInfo Path { get; }
 
-        public TemporaryDirectory(string directoryPath)
-            : this(new IO.DirectoryInfo(directoryPath))
+        public TemporaryDirectory(string directoryPath, bool setCurrentDirectory)
+            : this(new IO.DirectoryInfo(directoryPath), setCurrentDirectory)
         { }
 
-        public TemporaryDirectory(IO.DirectoryInfo directoryPath)
+        public TemporaryDirectory(IO.DirectoryInfo directoryPath, bool setCurrentDirectory)
             : base(() => directoryPath.Delete(true))
         {
             Path = directoryPath;
             Path.Create();
+
+            if (setCurrentDirectory)
+                System.Environment.CurrentDirectory = this;
         }
 
-        public static TemporaryDirectory CreateTemporaryDirectory()
+        public static TemporaryDirectory CreateTemporaryDirectory(bool setCurrentDirectory)
         {
             var tempPath = IO.Path.GetTempPath();
             var tempDirectoryName = IO.Path.GetRandomFileName();
             var tempDirectoryFullPath = IO.Path.Combine(tempPath, tempDirectoryName);
 
-            return new TemporaryDirectory(tempDirectoryFullPath);
+            return new TemporaryDirectory(tempDirectoryFullPath, setCurrentDirectory);
         }
 
-        public static TemporaryDirectory CreateLocalTemporaryDirectory()
-            => new TemporaryDirectory(IO.Path.GetRandomFileName());
+        public static TemporaryDirectory CreateLocalTemporaryDirectory(bool setCurrentDirectory)
+            => new TemporaryDirectory(IO.Path.GetRandomFileName(), setCurrentDirectory);
 
         /// <summary>
         /// Implicit conversion to <see cref="IO.DirectoryInfo"/> for easy use as method parameter, etc.
@@ -50,6 +53,6 @@ namespace FaustVX.Temp
         /// Explicit conversion from <see cref="IO.DirectoryInfo"/> for easy wrapping.
         /// </summary>
         public static explicit operator TemporaryDirectory(IO.DirectoryInfo directoryInfo)
-            => new TemporaryDirectory(directoryInfo.FullName);
+            => new TemporaryDirectory(directoryInfo.FullName, false);
     }
 }
