@@ -13,8 +13,6 @@
     <Authors>FaustVX</Authors>
     <PackageId>FaustVX.Temp</PackageId>
     <Product>FaustVX.Temp</Product>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.2.0</Version>
     <RepositoryUrl>https://github.com/FaustVX/FaustVX.Temp</RepositoryUrl>
   </PropertyGroup>
 

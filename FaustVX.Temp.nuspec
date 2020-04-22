@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>FaustVX.Temp</id>
+        <version>1.2.0</version>
+        <authors>FaustVX</authors>
+        <projectUrl>https://github.com/FaustVX/FaustVX.Temp</projectUrl>
+        <description>Creation of Temp folder and file for .NET</description>
+        <repository type="git" url="https://github.com/FaustVX/FaustVX.Temp"/>
+        <dependencies>
+            <group targetFramework=".NETCoreApp3.0" />
+        </dependencies>
+    </metadata>
+</package>

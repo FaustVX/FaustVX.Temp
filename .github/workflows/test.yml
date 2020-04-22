@@ -1,8 +1,8 @@
 name: publishNugetPackage
 
 on: 
-  push:
-    branches: master
+    pull_request:
+      branches: [master]
 
 jobs:
   publish:
@@ -19,5 +19,3 @@ jobs:
         nuget setApiKey ${{ secrets.TOKEN }} -source "GitHub"
     - run: dotnet test -c Test
     - run: dotnet build -c Release
-    - run: nuget pack FaustVX.Temp.csproj -Properties Configuration=Release
-    - run: nuget push *.nupkg -Source "GitHub"
