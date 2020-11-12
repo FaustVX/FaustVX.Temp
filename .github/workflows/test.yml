@@ -19,3 +19,4 @@ jobs:
         nuget setApiKey ${{ secrets.TOKEN }} -source "GitHub"
     - run: dotnet test -c Test
     - run: dotnet build -c Release
+    - run: nuget pack FaustVX.Temp.csproj -Properties Configuration=Release
