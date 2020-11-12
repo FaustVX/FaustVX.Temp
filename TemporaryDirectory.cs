@@ -9,6 +9,10 @@ namespace FaustVX.Temp
         /// </summary>
         public IO.DirectoryInfo Path { get; }
 
+        public TemporaryDirectory(TemporaryDirectory directoryPath, bool setCurrentDirectory)
+            : this(new IO.DirectoryInfo(directoryPath.Path), setCurrentDirectory)
+        { }
+
         public TemporaryDirectory(string directoryPath, bool setCurrentDirectory)
             : this(new IO.DirectoryInfo(directoryPath), setCurrentDirectory)
         { }
