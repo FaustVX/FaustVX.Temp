@@ -9,6 +9,10 @@ namespace FaustVX.Temp
         /// </summary>
         public IO.DirectoryInfo Path { get; }
 
+        public TemporaryDirectory(TemporaryDirectory directoryPath, bool setCurrentDirectory)
+            : this(directoryPath.Path, setCurrentDirectory)
+        { }
+
         public TemporaryDirectory(string directoryPath, bool setCurrentDirectory)
             : this(new IO.DirectoryInfo(directoryPath), setCurrentDirectory)
         { }
@@ -17,7 +21,8 @@ namespace FaustVX.Temp
             : base(OnDispose(setCurrentDirectory, System.Environment.CurrentDirectory, directoryPath))
         {
             Path = directoryPath;
-            Path.Create();
+            if(!Path.Exists)
+                Path.Create();
 
             if (setCurrentDirectory)
                 System.Environment.CurrentDirectory = this;

@@ -30,6 +30,15 @@ namespace FaustVX.Temp.Test
                 Assert.AreEqual(System.Environment.CurrentDirectory, dir);
             Assert.AreEqual(current, System.Environment.CurrentDirectory);
         }
+        
+        [TestMethod]
+        public void DontRecreateDirectory()
+        {
+            var dir = TemporaryDirectory.CreateLocalTemporaryDirectory(false);
+            File.WriteAllText(Path.Combine(dir.Path.FullName, "file"), "Test");
+            using (var temp = new TemporaryDirectory(dir, true))
+                Assert.AreEqual("Test", File.ReadAllText("file"));
+        }
     }
 }
 #endif
