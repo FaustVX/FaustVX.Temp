@@ -37,7 +37,7 @@ namespace FaustVX.Temp.Test
             var dir = TemporaryDirectory.CreateLocalTemporaryDirectory(false);
             File.WriteAllText(Path.Combine(dir.Path.FullName, "file"), "Test");
             using (var temp = new TemporaryDirectory(dir, true))
-                Assert.AreEquals("Test", File.ReadAllText("file"));
+                Assert.AreEqual("Test", File.ReadAllText("file"));
         }
     }
 }
