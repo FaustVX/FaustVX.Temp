@@ -17,7 +17,8 @@ namespace FaustVX.Temp
             : base(OnDispose(setCurrentDirectory, System.Environment.CurrentDirectory, directoryPath))
         {
             Path = directoryPath;
-            Path.Create();
+            if(!Path.Exist)
+                Path.Create();
 
             if (setCurrentDirectory)
                 System.Environment.CurrentDirectory = this;
